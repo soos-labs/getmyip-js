@@ -1,20 +1,42 @@
 {
   "name": "getmyip-pro",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tiny, dependency-free Node.js client and CLI for the getmyip.pro IP geolocation API",
   "type": "module",
   "main": "index.js",
   "exports": "./index.js",
-  "bin": { "getmyip": "./cli.js" },
-  "files": ["index.js", "cli.js", "README.md", "LICENSE"],
+  "bin": {
+    "getmyip": "./cli.js"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "cli.js",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "node --test"
   },
-  "engines": { "node": ">=18" },
-  "keywords": ["ip", "geolocation", "geoip", "asn", "ip-api"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "ip",
+    "geolocation",
+    "geoip",
+    "asn",
+    "ip-api"
+  ],
   "author": "Soos Labs",
   "license": "MIT",
   "homepage": "https://getmyip.pro",
-  "repository": { "type": "git", "url": "git+https://github.com/soos-labs/getmyip-js.git" },
-  "bugs": { "url": "https://github.com/soos-labs/getmyip-js/issues" }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soos-labs/getmyip-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/soos-labs/getmyip-js/issues"
+  },
+  "types": "./index.d.ts"
 }
