@@ -3,7 +3,7 @@
 // See https://getmyip.pro/docs (API at https://api.getmyip.pro). Node 18+ (fetch).
 
 export const DEFAULT_BASE_URL = "https://api.getmyip.pro";
-export const VERSION = "0.1.1";
+export const VERSION = "0.1.2";
 
 /** Non-200 API response; carries HTTP status and the API's error code. */
 export class APIError extends Error {

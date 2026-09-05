@@ -22,7 +22,8 @@ for (let i = 0; i < args.length; i++) {
 }
 
 try {
-  const c = new Client({ apiKey: key });
+  // GETMYIP_BASE_URL — свой инстанс (self-hosted) или мок в тестах
+  const c = new Client({ apiKey: key, baseUrl: process.env.GETMYIP_BASE_URL || undefined });
   const r = ip ? await c.lookup(ip) : await c.me();
   if (field !== undefined) {
     if (!(field in r)) {
