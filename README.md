@@ -2,8 +2,9 @@
 
 Tiny, dependency-free Node.js client **and CLI** for the [getmyip.pro](https://getmyip.pro) IP geolocation API — privacy-first (no logs, no trackers), with ip-api-compatible JSON.
 
-> One plan: free. 60 requests/min, 10,000/day, batch up to 100 IPs — no signup,
-> no key. Hit the ceiling? Email tech@getmyip.pro and we'll raise it for you.
+> Anonymous lookups: 60 requests/min and 10,000/day, no key. Batch needs a key.
+> Sign in at https://getmyip.pro/login for one key: 600/min, 100,000/day,
+> batch up to 1,000 IPs. Revoke the current key to create another.
 
 [![Test](https://github.com/soos-labs/getmyip-js/actions/workflows/test.yml/badge.svg)](https://github.com/soos-labs/getmyip-js/actions/workflows/test.yml)
 [![npm](https://img.shields.io/npm/v/getmyip-pro)](https://www.npmjs.com/package/getmyip-pro)
