@@ -2,6 +2,8 @@
 
 Tiny, dependency-free Node.js client **and CLI** for the [getmyip.pro](https://getmyip.pro) IP geolocation API — privacy-first (no logs, no trackers), with ip-api-compatible JSON.
 
+Batch requests require an API key. The key issued in the dashboard accepts up to 1,000 IPs per request. Existing free-tier keys accept up to 100.
+
 > Anonymous lookups: 60 requests/min and 10,000/day, no key. Batch needs a key.
 > Sign in at https://getmyip.pro/login for one key: 600/min, 100,000/day,
 > batch up to 1,000 IPs. Revoke the current key to create another.
@@ -45,7 +47,8 @@ import { Client } from "getmyip-pro";
 const c = new Client();                    // new Client({ apiKey: "..." }) to raise limits
 const me = await c.me();                   // your own IP
 const r = await c.lookup("8.8.8.8");       // any IPv4/IPv6
-const rs = await c.batch(["8.8.8.8", "1.1.1.1"]);
+const keyed = new Client({ apiKey: process.env.GETMYIP_API_KEY });
+const rs = await keyed.batch(["8.8.8.8", "1.1.1.1"]);
 
 console.log(r.country, r.org, r.asn);      // United States Google LLC 15169
 ```
