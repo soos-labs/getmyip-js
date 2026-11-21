@@ -2,9 +2,11 @@
 
 Tiny, dependency-free Node.js client **and CLI** for the [getmyip.pro](https://getmyip.pro) IP geolocation API — privacy-first (no logs, no trackers), with ip-api-compatible JSON.
 
-> Free anonymous lookups: 60 requests/min and 10,000/day, no signup or key.
-> Batch requests require an API key (up to 100 IPs on the free-key tier). If you
-> hit a limit, email tech@getmyip.pro.
+Batch requests require an API key. The key issued in the dashboard accepts up to 1,000 IPs per request. Existing free-tier keys accept up to 100.
+
+> Anonymous lookups: 60 requests/min and 10,000/day, no key. Batch needs a key.
+> Sign in at https://getmyip.pro/login for one key: 600/min, 100,000/day,
+> batch up to 1,000 IPs. Revoke the current key to create another.
 
 [![Test](https://github.com/soos-labs/getmyip-js/actions/workflows/test.yml/badge.svg)](https://github.com/soos-labs/getmyip-js/actions/workflows/test.yml)
 [![npm](https://img.shields.io/npm/v/getmyip-pro)](https://www.npmjs.com/package/getmyip-pro)
@@ -45,8 +47,8 @@ import { Client } from "getmyip-pro";
 const c = new Client();                    // new Client({ apiKey: "..." }) to raise limits
 const me = await c.me();                   // your own IP
 const r = await c.lookup("8.8.8.8");       // any IPv4/IPv6
-const keyedClient = new Client({ apiKey: "YOUR_API_KEY" }); // batch requires a key
-const rs = await keyedClient.batch(["8.8.8.8", "1.1.1.1"]);
+const keyed = new Client({ apiKey: process.env.GETMYIP_API_KEY });
+const rs = await keyed.batch(["8.8.8.8", "1.1.1.1"]);
 
 console.log(r.country, r.org, r.asn);      // United States Google LLC 15169
 ```
@@ -54,15 +56,6 @@ console.log(r.country, r.org, r.asn);      // United States Google LLC 15169
 Errors throw `APIError` with `.status` and `.error` (e.g. `rate_limited` — see [limits](https://getmyip.pro/limits)).
 
 No dependencies: built-in `fetch` only. Node 18+.
-
-## API contract
-
-The clients call `GET /v1/json` for the caller, `GET /v1/{ip}` for an IPv4 or
-IPv6 lookup, and `POST /v1/batch` for a batch. Anonymous requests default to 60
-per minute and 10,000 per day. Batch requests require an API key and allow up to
-100 IPs on the free-key tier or 1,000 on the Pro tier by default. Limits can be
-changed by service configuration. See the [current API documentation](https://docs.getmyip.pro)
-for response fields, errors, and the current limits.
 
 ## Related
 
